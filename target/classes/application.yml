@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3303/spring
-    username: root
-    password: 92470
+    url: jdbc:mysql://saboremacaodb.c68hy0koptsq.us-east-1.rds.amazonaws.com:3306/cadastro
+    username: admin
+    password: Legosite1
   jpa:
     hibernate:
       ddl-auto: update
