@@ -10,7 +10,5 @@ import java.util.UUID;
 
 @Repository
 public interface PersonRepository  extends JpaRepository<Person, UUID> {
-
-    @Query("SELECT p FROM Person p where LOWER(p.name) LIKE CONCAT('%', LOWER(:name), '%')")
-    Person findPersonByName(@Param("name") String name);
+    
 }

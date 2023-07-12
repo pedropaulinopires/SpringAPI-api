@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/cadastro
+    url: jdbc:mysql://localhost:3303/cadastro
     username: root
     password: 92470
   jpa:
