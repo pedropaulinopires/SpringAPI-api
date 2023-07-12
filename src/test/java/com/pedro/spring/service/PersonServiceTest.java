@@ -65,24 +65,19 @@ class PersonServiceTest {
 
     }
 
-    private Person createPerson() {
-        return personService.savePerson(PersonPostBodyRequestCreated.createPersonPostBodyRequest());
-    }
 
     @Test
     @DisplayName("List pageable find all peoples when success full!")
     void list_findAllPeoplesPageable_WhenSuccessFull() {
-        Person personSave = createPerson();
         Page<Person> pagePeoples = personService.findAll(PageRequest.of(0, 1, Sort.by("name")));
         Assertions.assertThat(pagePeoples).isNotEmpty().hasSize(1);
-        Assertions.assertThat(pagePeoples.toList().get(0)).isEqualTo(personSave);
+        Assertions.assertThat(pagePeoples.toList().get(0)).isEqualTo(PersonCreated.createPersonToBeValid());
     }
 
 
     @Test
     @DisplayName("Get find person by id when success full!")
     void get_findPersonById_WhenSuccessFull() {
-        Person personSave = createPerson();
         Person searchPersonById = personService.findById(UUID_PERSON);
         Assertions.assertThat(searchPersonById).isNotNull();
         Assertions.assertThat(searchPersonById).isEqualTo(PersonCreated.createPersonToBeValid());
@@ -92,7 +87,6 @@ class PersonServiceTest {
     @Test
     @DisplayName("Save person when success full!")
     void post_savePerson_WhenSuccessFull() {
-        Person personSave = createPerson();
         Page<Person> pagePeoples = personService.findAll(PageRequest.of(0, 1, Sort.by("name")));
         Assertions.assertThat(pagePeoples).isNotEmpty().isNotNull();
         Assertions.assertThat(pagePeoples.stream().toList()).isEqualTo(List.of(PersonCreated.createPersonToBeValid()));

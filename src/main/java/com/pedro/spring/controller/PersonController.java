@@ -40,7 +40,7 @@ public class PersonController {
     }
 
     @GetMapping("/people/{id}")
-    public ResponseEntity<Person> findAll(@PathVariable String id) {
+    public ResponseEntity<Person> find(@PathVariable String id) {
         return new ResponseEntity<>(personService.findById(id), HttpStatus.OK);
     }
 
