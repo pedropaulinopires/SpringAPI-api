@@ -3,6 +3,7 @@ com\pedro\spring\exception\ValidationException$ValidationExceptionBuilder.class
 com\pedro\spring\exception\ExceptionDetails$ExceptionDetailsBuilderImpl.class
 com\pedro\spring\SpringApiApplication.class
 com\pedro\spring\exception\ValidationException$ValidationExceptionBuilderImpl.class
+com\pedro\spring\wrapper\PageableResponse.class
 com\pedro\spring\enums\Sexo.class
 com\pedro\spring\configure\ConfigurationCors.class
 com\pedro\spring\domain\Person.class

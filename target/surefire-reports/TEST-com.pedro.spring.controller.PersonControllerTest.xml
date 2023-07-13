@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.pedro.spring.SpringApiApplicationTests" time="1.221" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.pedro.spring.controller.PersonControllerTest" time="1.813" tests="5" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="19"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -10,7 +10,6 @@
     <property name="user.variant" value=""/>
     <property name="java.vendor.url" value="https://java.oracle.com/"/>
     <property name="user.timezone" value="America/Sao_Paulo"/>
-    <property name="org.jboss.logging.provider" value="slf4j"/>
     <property name="os.name" value="Windows 10"/>
     <property name="java.vm.specification.version" value="19"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
@@ -31,8 +30,6 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="FILE_LOG_CHARSET" value="UTF-8"/>
-    <property name="java.awt.headless" value="true"/>
     <property name="surefire.real.class.path" value="C:\Users\Usuario\AppData\Local\Temp\surefire5752360476419436465\surefirebooter-20230712215914694_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
@@ -47,14 +44,11 @@
     <property name="localRepository" value="C:\Users\Usuario\.m2\repository"/>
     <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
     <property name="java.io.tmpdir" value="C:\Users\Usuario\AppData\Local\Temp\"/>
-    <property name="com.zaxxer.hikari.pool_number" value="1"/>
     <property name="java.version" value="19.0.1"/>
     <property name="user.dir" value="C:\Users\Usuario\Documents\IntelljProjects\SpringAPI"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="PID" value="10552"/>
     <property name="sun.os.patch.level" value=""/>
-    <property name="CONSOLE_LOG_CHARSET" value="UTF-8"/>
     <property name="native.encoding" value="Cp1252"/>
     <property name="java.library.path" value="C:\Program Files\Java\jdk-19\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files\Git\cmd;C:\Users\Usuario\Documents\apache-maven-3.8.6\bin;C:\Program Files\Amazon\AWSCLI\bin\;C:\Program Files\nodejs\;C:\Users\Usuario\AppData\Local\Microsoft\WindowsApps;C:\Users\Usuario\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Usuario\AppData\Local\GitHubDesktop\bin;C:\Users\Usuario\Documents\apache-maven-3.8.6\bin;;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2022.3.2\bin;;C:\Program Files\JetBrains\IntelliJ IDEA 2022.3.2\bin;;C:\Users\Usuario\AppData\Roaming\npm;."/>
     <property name="java.vm.info" value="mixed mode, sharing"/>
@@ -64,33 +58,14 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="63.0"/>
   </properties>
-  <testcase name="contextLoads" classname="com.pedro.spring.SpringApiApplicationTests" time="0.002">
-    <system-out><![CDATA[2023-07-12T21:59:19.289-03:00  INFO 10552 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.pedro.spring.SpringApiApplicationTests]: SpringApiApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2023-07-12T21:59:19.296-03:00  INFO 10552 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.pedro.spring.SpringApiApplication for test class com.pedro.spring.SpringApiApplicationTests
-
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
- :: Spring Boot ::                (v3.1.1)
-
-2023-07-12T21:59:19.334-03:00  INFO 10552 --- [           main] c.p.spring.SpringApiApplicationTests     : Starting SpringApiApplicationTests using Java 19.0.1 with PID 10552 (started by Usuario in C:\Users\Usuario\Documents\IntelljProjects\SpringAPI)
-2023-07-12T21:59:19.334-03:00  INFO 10552 --- [           main] c.p.spring.SpringApiApplicationTests     : No active profile set, falling back to 1 default profile: "default"
-2023-07-12T21:59:19.588-03:00  INFO 10552 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-07-12T21:59:19.601-03:00  INFO 10552 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 1 JPA repository interfaces.
-2023-07-12T21:59:19.718-03:00  INFO 10552 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-07-12T21:59:19.724-03:00  INFO 10552 --- [           main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
-2023-07-12T21:59:19.724-03:00  INFO 10552 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-07-12T21:59:19.725-03:00  INFO 10552 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2023-07-12T21:59:20.011-03:00  INFO 10552 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@f4e235e
-2023-07-12T21:59:20.013-03:00  INFO 10552 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2023-07-12T21:59:20.053-03:00  INFO 10552 --- [           main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
-2023-07-12T21:59:20.075-03:00  INFO 10552 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-07-12T21:59:20.101-03:00  INFO 10552 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-07-12T21:59:20.253-03:00  WARN 10552 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-07-12T21:59:20.495-03:00  INFO 10552 --- [           main] c.p.spring.SpringApiApplicationTests     : Started SpringApiApplicationTests in 1.188 seconds (process running for 5.697)
+  <testcase name="get_findAllPeoplesPageable_WhenSuccessFull" classname="com.pedro.spring.controller.PersonControllerTest" time="0.121">
+    <system-out><![CDATA[21:59:15.444 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.pedro.spring.controller.PersonControllerTest]: PersonControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+21:59:16.742 [main] INFO org.springframework.boot.test.autoconfigure.jdbc.TestDatabaseAutoConfiguration$EmbeddedDataSourceBeanFactoryPostProcessor -- Replacing 'dataSource' DataSource bean with embedded version
+21:59:16.787 [main] INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory -- Starting embedded database: url='jdbc:h2:mem:149158b7-1a54-44b5-92eb-49b3359d32eb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
 ]]></system-out>
   </testcase>
+  <testcase name="post_savePerson_WhenSuccessFull" classname="com.pedro.spring.controller.PersonControllerTest" time="0.004"/>
+  <testcase name="get_findPersonById_WhenSuccessFull" classname="com.pedro.spring.controller.PersonControllerTest" time="0.003"/>
+  <testcase name="put_replacePerson_WhenSuccessFull" classname="com.pedro.spring.controller.PersonControllerTest" time="0.005"/>
+  <testcase name="delete_removePersonById_WhenSuccessFull" classname="com.pedro.spring.controller.PersonControllerTest" time="0.003"/>
 </testsuite>

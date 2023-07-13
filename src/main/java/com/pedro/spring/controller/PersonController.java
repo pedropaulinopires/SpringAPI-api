@@ -30,12 +30,10 @@ public class PersonController {
         }
         Page<Person> peoplesPage = personService.findAll(PageRequest.of(currentPage, 6, Sort.by("name")));
 
-        if (currentPage >= peoplesPage.getTotalPages()) {
+        if (currentPage != 0 && currentPage >= peoplesPage.getTotalPages()) {
             currentPage = peoplesPage.getTotalPages() - 1;
             peoplesPage = personService.findAll(PageRequest.of(currentPage, 6, Sort.by("name")));
         }
-
-
         return new ResponseEntity<>(peoplesPage, HttpStatus.OK);
     }
 
