@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Builder
+
 public class PersonPostRequest {
 
     @NotEmpty(message = "Campo nome é obrigatório!")
@@ -21,8 +22,8 @@ public class PersonPostRequest {
     @NotNull(message = "Campo sexo é obrigatório!")
     private Sexo sexo;
 
-    public Person build(){
-       return new Person().builder().name(this.name).sexo(this.sexo).build();
+    public Person build() {
+        return new Person().builder().name(this.name).sexo(this.sexo).build();
     }
 
 }

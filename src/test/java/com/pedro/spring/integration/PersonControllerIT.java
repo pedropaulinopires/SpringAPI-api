@@ -1,7 +1,6 @@
 package com.pedro.spring.integration;
 
 import com.pedro.spring.domain.Person;
-import com.pedro.spring.enums.Sexo;
 import com.pedro.spring.repository.PersonRepository;
 import com.pedro.spring.util.PersonCreated;
 import com.pedro.spring.util.PersonPostBodyRequestCreated;
@@ -20,8 +19,6 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.test.annotation.DirtiesContext;
 
-import java.util.UUID;
-
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureTestDatabase
@@ -34,7 +31,7 @@ public class PersonControllerIT {
     @Autowired
     private PersonRepository personRepository;
 
-    private Person savePerson(){
+    private Person savePerson() {
         return personRepository.save(PersonCreated.createPersonToBeSave());
     }
 
@@ -76,7 +73,7 @@ public class PersonControllerIT {
     @DisplayName("Put replace person when success full!")
     void put_replacePerson_WhenSuccessFull() {
         Person personSave = savePerson();
-        testRestTemplate.exchange("/people/replace",HttpMethod.PUT,new HttpEntity<>(PersonPutBodyRequestCreated.createPersonPutBodyRequest(personSave.getId())), Void.class);
+        testRestTemplate.exchange("/people/replace", HttpMethod.PUT, new HttpEntity<>(PersonPutBodyRequestCreated.createPersonPutBodyRequest(personSave.getId())), Void.class);
         Page<Person> pagePerson = testRestTemplate.exchange("/peoples?page=0", HttpMethod.GET, null, new ParameterizedTypeReference<PageableResponse<Person>>() {
         }).getBody();
 

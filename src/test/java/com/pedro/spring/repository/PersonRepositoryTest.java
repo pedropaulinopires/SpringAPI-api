@@ -9,10 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
 class PersonRepositoryTest {
@@ -21,18 +17,18 @@ class PersonRepositoryTest {
     private PersonRepository personRepository;
 
     //create entity
-    private Person createPerson(){
-        return new Person(null,"Pedro", Sexo.M);
+    private Person createPerson() {
+        return new Person(null, "Pedro", Sexo.M);
     }
 
-    private Person savePerson(){
-        return  personRepository.save(createPerson());
+    private Person savePerson() {
+        return personRepository.save(createPerson());
     }
 
 
     @Test
     @DisplayName("List pageable find all peoples when success full!")
-    void  list_findPeoplesPageable_WhenSuccessFull(){
+    void list_findPeoplesPageable_WhenSuccessFull() {
         Person personSave = savePerson();
         List<Person> listPeoples = personRepository.findAll();
         Assertions.assertThat(listPeoples).isNotNull().hasSize(1);
@@ -42,16 +38,16 @@ class PersonRepositoryTest {
 
     @Test
     @DisplayName("Get find person by id when success full!")
-    void  get_findPersonById_WhenSuccessFull(){
+    void get_findPersonById_WhenSuccessFull() {
         Person personSave = savePerson();
-        Person searchPersonById  = personRepository.findById(personSave.getId()).get();
+        Person searchPersonById = personRepository.findById(personSave.getId()).get();
         Assertions.assertThat(searchPersonById).isNotNull();
         Assertions.assertThat(searchPersonById).isEqualTo(personSave);
     }
 
     @Test
     @DisplayName("Post save person when success full!")
-    void  post_savePerson_WhenSuccessFull(){
+    void post_savePerson_WhenSuccessFull() {
         Person personSave = savePerson();
         List<Person> listPeoples = personRepository.findAll();
         Assertions.assertThat(listPeoples).isNotNull().hasSize(1);
@@ -60,7 +56,7 @@ class PersonRepositoryTest {
 
     @Test
     @DisplayName("Put replace person when success full!")
-    void  put_replacePerson_WhenSuccessFull(){
+    void put_replacePerson_WhenSuccessFull() {
         Person personSave = savePerson();
         personSave.setName("Pedro Teste");
         Person personReplace = personRepository.save(personSave);
@@ -71,7 +67,7 @@ class PersonRepositoryTest {
 
     @Test
     @DisplayName("Delete remove person by id when success full!")
-    void  delete_removePersonById_WhenSuccessFull(){
+    void delete_removePersonById_WhenSuccessFull() {
         Person personSave = savePerson();
         List<Person> listPeoples = personRepository.findAll();
         Assertions.assertThat(listPeoples).isNotNull().hasSize(1);

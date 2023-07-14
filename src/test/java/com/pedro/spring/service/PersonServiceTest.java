@@ -3,7 +3,6 @@ package com.pedro.spring.service;
 import com.pedro.spring.domain.Person;
 import com.pedro.spring.repository.PersonRepository;
 import com.pedro.spring.util.PersonCreated;
-import com.pedro.spring.util.PersonPostBodyRequestCreated;
 import com.pedro.spring.util.PersonPutBodyRequestCreated;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

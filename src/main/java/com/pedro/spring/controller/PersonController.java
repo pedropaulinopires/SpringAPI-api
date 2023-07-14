@@ -44,7 +44,7 @@ public class PersonController {
 
     @PostMapping(value = "/people/save")
     public ResponseEntity<Person> save(@Valid @RequestBody PersonPostRequest person) {
-        return new ResponseEntity<>(personService.savePerson(person),HttpStatus.CREATED);
+        return new ResponseEntity<>(personService.savePerson(person), HttpStatus.CREATED);
 
     }
 

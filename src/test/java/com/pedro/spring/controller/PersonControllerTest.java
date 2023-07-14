@@ -23,7 +23,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @ExtendWith(value = SpringExtension.class)
 @AutoConfigureTestDatabase
@@ -42,7 +41,7 @@ class PersonControllerTest {
     private final String UUID_PERSON = "5d3046b4-2026-11ee-be56-0242ac120002";
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
 
         // pageable person
         Page<Person> pagePerson = new PageImpl<>(List.of(PersonCreated.createPersonToBeValid()));
@@ -73,7 +72,7 @@ class PersonControllerTest {
 
     @Test
     @DisplayName("Get find all peoples pageable when success full!")
-    void get_findAllPeoplesPageable_WhenSuccessFull(){
+    void get_findAllPeoplesPageable_WhenSuccessFull() {
         Page<Person> pagePerson = personController.findAll(Optional.of(1)).getBody();
         Assertions.assertThat(pagePerson.stream().toList()).isNotEmpty().hasSize(1);
         Assertions.assertThat(pagePerson.stream().toList().get(0)).isEqualTo(PersonCreated.createPersonToBeValid());
@@ -81,30 +80,29 @@ class PersonControllerTest {
 
     @Test
     @DisplayName("Get find person by id when success full!")
-    void get_findPersonById_WhenSuccessFull (){
+    void get_findPersonById_WhenSuccessFull() {
         Person searchPersonById = personController.find(UUID_PERSON).getBody();
         Assertions.assertThat(searchPersonById).isNotNull().isEqualTo(PersonCreated.createPersonToBeValid());
     }
 
     @Test
     @DisplayName("Post save person when success full!")
-    void post_savePerson_WhenSuccessFull(){
+    void post_savePerson_WhenSuccessFull() {
         Person personSave = personController.save(PersonPostBodyRequestCreated.createPersonPostBodyRequest()).getBody();
         Assertions.assertThat(personSave).isNotNull().isEqualTo(PersonCreated.createPersonToBeValid());
     }
 
     @Test
     @DisplayName("Delete remove person by id when success full!")
-    void delete_removePersonById_WhenSuccessFull(){
+    void delete_removePersonById_WhenSuccessFull() {
         Assertions.assertThatCode(() -> personController.delete(UUID_PERSON)).doesNotThrowAnyException();
     }
 
     @Test
     @DisplayName("Put replace person when success full!")
-    void put_replacePerson_WhenSuccessFull(){
+    void put_replacePerson_WhenSuccessFull() {
         Assertions.assertThatCode(() -> personController.replace(PersonPutBodyRequestCreated.createPersonPutBodyRequest())).doesNotThrowAnyException();
     }
-
 
 
 }

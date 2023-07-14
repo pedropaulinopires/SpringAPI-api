@@ -5,9 +5,9 @@ import lombok.experimental.SuperBuilder;
 
 @Getter
 @SuperBuilder
-public class ValidationException extends ExceptionDetails{
+public class ValidationException extends ExceptionDetails {
 
-    protected  String fields;
+    protected String fields;
 
     protected String fieldsMessage;
 }

@@ -26,14 +26,14 @@ public class HandlerException extends ResponseEntityExceptionHandler {
     private static LocalDateTime TIME = LocalDateTime.now();
 
     @ExceptionHandler(DataIntegrityViolationException.class)
-    public ResponseEntity<ExceptionDetails> dataIntegrityViolationException(DataIntegrityViolationException ex){
+    public ResponseEntity<ExceptionDetails> dataIntegrityViolationException(DataIntegrityViolationException ex) {
         return new ResponseEntity<>(ExceptionDetails.builder()
                 .timestamp(TIME)
                 .status(HttpStatus.INTERNAL_SERVER_ERROR.value())
                 .error(ex.getMessage())
                 .message(ex.getMessage())
                 .messageDeveloper(ex.getLocalizedMessage())
-                .build(),HttpStatus.INTERNAL_SERVER_ERROR);
+                .build(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(PersonNotFoundById.class)
@@ -65,7 +65,7 @@ public class HandlerException extends ResponseEntityExceptionHandler {
                         .fields(fields)
                         .fieldsMessage(fieldsMessage)
                         .build()
-                ,status);
+                , status);
     }
 
     @Override

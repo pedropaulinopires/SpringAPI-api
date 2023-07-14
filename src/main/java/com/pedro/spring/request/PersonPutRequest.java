@@ -17,24 +17,23 @@ import java.util.UUID;
 @Builder
 public class PersonPutRequest {
 
-    @NotNull( message = "Campo id é obrigatório")
+    @NotNull(message = "Campo id é obrigatório")
     private UUID id;
 
-    @NotEmpty( message = "Campo nome é obrigatório")
+    @NotEmpty(message = "Campo nome é obrigatório")
     private String name;
     @NotNull(message = "Campo sexo é obrigatório!")
     private Sexo sexo;
 
 
-    public Person build(){
+    public Person build() {
         return new Person().builder().id(this.id).name(this.name).sexo(this.sexo).build();
     }
 
 
-    public Person build(UUID id){
+    public Person build(UUID id) {
         return new Person().builder().id(id).name(this.name).sexo(this.sexo).build();
     }
-
 
 
 }
