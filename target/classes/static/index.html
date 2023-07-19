@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="imgs/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/styleComponentsClass.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <title>Contatos</title>
+</head>
+<body>
+    <header>
+        <h1>Contatos</h1>
+        <p>Uma api criada para salvar contatos!</p>
+    </header>
+    <div class="msgAlerta" id="msgAlerta">
+      <div class="alert alert-primary" role="alert">
+        alerta!
+      </div>
+    </div>
+    <div class="container">
+        <form>
+            <div class="form-floating  mb-3">
+                <input type="text" class="form-control " id="inome" placeholder="Nome">
+                <label for="inome">Nome</label>
+                <div id="msgNome" class="invalid-feedback">              </div>
+            </div>
+            <div class="check">
+                <p>Sexo:</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="sexo" id="isexoM" checked>
+                    <label class="form-check-label" for="isexoM">
+                      Masculino
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="sexo" id="isexoF"  >
+                    <label class="form-check-label" for="isexoF">
+                      Feminino
+                    </label>
+                  </div>
+            </div>
+            <p class="msgSexo" id="msgSexo">Campo de sexo obrigatório!</p>
+        </form>
+            <button type="button" class="btn btn-success" id="btnCadastrar">Cadastrar</button>
+            <div class="spinner-border text-primary" role="status" id="spinSave">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+    </div>
+    <div class="msgAlerta2" id="msgAlerta2">
+      <div class="alert alert-warning" role="alert">
+        Lista de contatos vazio
+      </div>
+    </div>
+    <div class="estruturaTabela" id="estruturaTabela">
+      <div class="tableHeader">
+          <p>Nome</p><p>Sexo</p><p>Opções</p>
+      </div>
+      <div class="containerTable">
+          <table class="table">
+              <tbody id="corpoTabela">
+              </tbody>
+            </table>
+      </div>
+      <div class="navegacao" id="navegacao">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination" id="pagination">
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <!--modais-->
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="modalEdit" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="modalEditLabel">Editar contato</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-floating  mb-3">
+                  <input type="text" class="form-control " id="inomeEdit" placeholder="Nome">
+                  <label for="inomeEdit">Nome</label>
+                  <div class="invalid-feedback" id="msgEdit"></div>
+              </div>
+              <div class="check">
+                  <p>Sexo:</p>
+                  <div class="form-check">
+                      <input class="form-check-input" type="radio" name="sexo" id="isexoEditM" checked>
+                      <label class="form-check-label" for="isexoEditM">
+                        Masculino
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="sexo" id="isexoEditF"  >
+                      <label class="form-check-label" for="isexoEditF">
+                        Feminino
+                      </label>
+                    </div>
+              </div>
+              <p class="msgSexoEdit" id="msgSexoEdit">Campo de sexo obrigatório!</p>
+          </form>
+          <div id="spinEdit">
+            <div class="spinner-border text-primary" role="status" >
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="closeModaEdit">Fechar</button>
+            <button type="button" class="btn btn-primary" id="salvarEditar">Salvar edição</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+        <!-- Modal -->
+    <div class="modal fade" id="modalRemove" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="modalRemoveLabel">Remover contato</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p id="msgModalRemove">Você realmente deseja excluir esse contato?</p>
+            <div class="spinner-border text-primary" role="status" id="spinRemove">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="btnCloseModalRemove" >Fechar</button>
+            <button type="button" class="btn btn-primary" id="btnRemove">Remover contato</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="scripts/paginationScript.js"></script>
+    <script type="module" src="scripts/validationEditScript.js"></script>
+    <script type="module" src="scripts/editPersonScript.js"></script>
+    <script type="module" src="scripts/deletePersonScript.js"></script>
+    <script type="module" src="scripts/getPeoplesSetTable.js"></script>
+    <script type="module" src="scripts/spinBtnEditScript.js"></script>
+    <script type="module" src="scripts/spinBtnSaveScript.js"></script>
+    <script type="module" src="scripts/msgAlertaScript.js"></script>
+    <script type="module" src="scripts/validationSaveScript.js"></script>
+    <script type="module" src="scripts/savePerson.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  </body>
+</body>
+</html>
