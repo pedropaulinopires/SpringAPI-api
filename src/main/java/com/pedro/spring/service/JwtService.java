@@ -10,7 +10,7 @@ import java.util.Date;
 @Service
 public class JwtService {
 
-    private static final int TIME_EXPIRES = 1000;
+    private static final int TIME_EXPIRES = 900000;
     public static final String TOKEN_PASSWORD = "41989389-700f-4349-9a1d-5eb5e98ffc8a";
     public String generatedToken(Users user){
         return JWT.create().withSubject(user.getId().toString()).withExpiresAt(new Date(new Date().getTime()+TIME_EXPIRES)).sign(

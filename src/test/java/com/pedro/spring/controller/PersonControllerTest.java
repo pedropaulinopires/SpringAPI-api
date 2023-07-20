@@ -6,6 +6,7 @@ import com.pedro.spring.service.PersonService;
 import com.pedro.spring.util.PersonCreated;
 import com.pedro.spring.util.PersonPostBodyRequestCreated;
 import com.pedro.spring.util.PersonPutBodyRequestCreated;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.log4j.Log4j2;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -71,13 +72,13 @@ class PersonControllerTest {
 
     }
 
-//    @Test
-//    @DisplayName("Get find all peoples pageable when success full!")
-//    void get_findAllPeoplesPageable_WhenSuccessFull() throws UnsupportedEncodingException {
-//        Page<Person> pagePerson = personController.findAll(Optional.of(1),null).getBody();
-//        Assertions.assertThat(pagePerson.stream().toList()).isNotEmpty().hasSize(1);
-//        Assertions.assertThat(pagePerson.stream().toList().get(0)).isEqualTo(PersonCreated.createPersonToBeValid());
-//    }
+    @Test
+    @DisplayName("Get find all peoples pageable when success full!")
+    void get_findAllPeoplesPageable_WhenSuccessFull() throws UnsupportedEncodingException {
+        Page<Person> pagePerson = personController.findAll(Optional.of(1, null),null).getBody();
+        Assertions.assertThat(pagePerson.stream().toList()).isNotEmpty().hasSize(1);
+        Assertions.assertThat(pagePerson.stream().toList().get(0)).isEqualTo(PersonCreated.createPersonToBeValid());
+    }
 
     @Test
     @DisplayName("Get find person by id when success full!")
