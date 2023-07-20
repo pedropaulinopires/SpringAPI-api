@@ -29,7 +29,6 @@ public class PersonController {
 
     @GetMapping("/peoples")
     public ResponseEntity<Page<Person>> findAll(HttpServletRequest request, @Param("page") Optional<Integer> page) throws UnsupportedEncodingException {
-
         if (usersService.checkUser(request)) {
             int currentPage = page.orElse(1) - 1;
             if (currentPage < 0) {

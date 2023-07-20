@@ -1,11 +1,16 @@
 package com.pedro.spring.controller;
 
 import com.pedro.spring.domain.Person;
+import com.pedro.spring.domain.Users;
+import com.pedro.spring.enums.Authorities;
 import com.pedro.spring.request.PersonPostRequest;
+import com.pedro.spring.service.CookieService;
+import com.pedro.spring.service.JwtService;
 import com.pedro.spring.service.PersonService;
 import com.pedro.spring.util.PersonCreated;
 import com.pedro.spring.util.PersonPostBodyRequestCreated;
 import com.pedro.spring.util.PersonPutBodyRequestCreated;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.log4j.Log4j2;
 import org.assertj.core.api.Assertions;
@@ -20,11 +25,14 @@ import org.mockito.Mock;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
+import org.springframework.mock.web.MockHttpServletRequest;
+import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @ExtendWith(value = SpringExtension.class)
 @AutoConfigureTestDatabase
@@ -40,10 +48,20 @@ class PersonControllerTest {
     @Mock
     private PersonService personService;
 
+    private MockHttpServletRequest mockHttpServletRequest;
+
+    private MockHttpServletResponse mockHttpServletResponse;
+
+    private JwtService jwtService;
+
     private final String UUID_PERSON = "5d3046b4-2026-11ee-be56-0242ac120002";
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws UnsupportedEncodingException {
+        Users user = new Users(UUID.fromString("9eb3bdf7-d8c8-4fac-917d-f2d4ee596f4f"),null,null,List.of(Authorities.ROLE_USER,Authorities.ROLE_ADMIN));
+        String token = jwtService.generatedToken(user);
+        Cookie cookie = new Cookie("UserAuthenticated",token);
+        mockHttpServletRequest.setCookies(cookie);
 
         // pageable person
         Page<Person> pagePerson = new PageImpl<>(List.of(PersonCreated.createPersonToBeValid()));
@@ -74,8 +92,8 @@ class PersonControllerTest {
 
     @Test
     @DisplayName("Get find all peoples pageable when success full!")
-    void get_findAllPeoplesPageable_WhenSuccessFull() throws UnsupportedEncodingException {
-        Page<Person> pagePerson = personController.findAll(Optional.of(1, null),null).getBody();
+    void get_findAllPeoplesPageable_WhenSuccessFull(HttpServletRequest request) throws UnsupportedEncodingException {
+        Page<Person> pagePerson = personController.findAll(Optional.of(1,request ),null).getBody();
         Assertions.assertThat(pagePerson.stream().toList()).isNotEmpty().hasSize(1);
         Assertions.assertThat(pagePerson.stream().toList().get(0)).isEqualTo(PersonCreated.createPersonToBeValid());
     }
