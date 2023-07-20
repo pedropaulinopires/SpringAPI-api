@@ -2,6 +2,7 @@ package com.pedro.spring.handler;
 
 import com.pedro.spring.exception.ExceptionDetails;
 import com.pedro.spring.exception.PersonNotFoundById;
+import com.pedro.spring.exception.UserException;
 import com.pedro.spring.exception.ValidationException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpHeaders;
@@ -43,6 +44,19 @@ public class HandlerException extends ResponseEntityExceptionHandler {
                         .timestamp(TIME)
                         .status(HttpStatus.NO_CONTENT.value())
                         .error("Person not found by id")
+                        .message(exception.getMessage())
+                        .messageDeveloper(exception.getClass() + " // " + exception.getLocalizedMessage() + "// " + TIME)
+                        .build()
+                , HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(UserException.class)
+    public ResponseEntity<ExceptionDetails> handlerPersonNotSaveException(UserException exception) {
+        return new ResponseEntity<>(
+                ExceptionDetails.builder()
+                        .timestamp(TIME)
+                        .status(HttpStatus.BAD_REQUEST.value())
+                        .error("Person not save")
                         .message(exception.getMessage())
                         .messageDeveloper(exception.getClass() + " // " + exception.getLocalizedMessage() + "// " + TIME)
                         .build()
