@@ -35,7 +35,7 @@ public class UsersService {
             user.setPassword(passwordEncoder().encode(user.getPassword()));
             Users userSave = usersRepository.save(user.build());
             String value = jwtService.generatedToken(userSave);
-            CookieService.setCookie(response,KEY,value,60*60*24);
+            CookieService.setCookie(response, KEY, value, 60 * 60 * 24);
             return userSave;
         }
         throw new UserException("Not save user, username in use!");
@@ -45,25 +45,25 @@ public class UsersService {
         Users usersFindUsername = usersRepository.usersFindByUsername(user.getUsername());
         if (usersFindUsername != null && passwordEncoder().matches(user.getPassword(), usersFindUsername.getPassword())) {
             String value = jwtService.generatedToken(usersFindUsername);
-            CookieService.setCookie(response,KEY,value,60*60*24);
+            CookieService.setCookie(response, KEY, value, 60 * 60 * 24);
             return true;
         } else {
             throw new UserException("Username/password invalid!");
         }
     }
 
-    public boolean checkUser(HttpServletRequest request){
-        try{
+    public boolean checkUser(HttpServletRequest request) {
+        try {
             String cookie = CookieService.getCookie(request, KEY);
-            if(cookie != null ){
+            if (cookie != null) {
                 String tokenValid = jwtService.readToken(cookie);
                 Optional<Users> userSearch = usersRepository.findById(UUID.fromString(tokenValid));
-                if(userSearch != null){
+                if (userSearch != null) {
                     return true;
                 }
                 return false;
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             return false;
         }
         return false;

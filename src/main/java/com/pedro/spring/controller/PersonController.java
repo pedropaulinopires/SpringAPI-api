@@ -28,7 +28,8 @@ public class PersonController {
     private final UsersService usersService;
 
     @GetMapping("/peoples")
-    public ResponseEntity<Page<Person>> findAll(HttpServletRequest request, @Param("page") Optional<Integer> page) throws UnsupportedEncodingException {
+    public ResponseEntity<Page<Person>> findAll(HttpServletRequest request, @Param("page") Optional<Integer> page)
+            throws UnsupportedEncodingException {
         if (usersService.checkUser(request)) {
             int currentPage = page.orElse(1) - 1;
             if (currentPage < 0) {
@@ -48,26 +49,38 @@ public class PersonController {
     }
 
     @GetMapping("/people/{id}")
-    public ResponseEntity<Person> find(@PathVariable String id) {
-        return new ResponseEntity<>(personService.findById(id), HttpStatus.OK);
+    public ResponseEntity<Person> find(@PathVariable String id, HttpServletRequest request) {
+        if (usersService.checkUser(request)) {
+            return new ResponseEntity<>(personService.findById(id), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
     @PostMapping(value = "/people/save")
-    public ResponseEntity<Person> save(@Valid @RequestBody PersonPostRequest person) {
-        return new ResponseEntity<>(personService.savePerson(person), HttpStatus.CREATED);
+    public ResponseEntity<Person> save(@Valid @RequestBody PersonPostRequest person, HttpServletRequest request) {
+        if (usersService.checkUser(request)) {
+            return new ResponseEntity<>(personService.savePerson(person), HttpStatus.CREATED);
+        }
+        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 
     }
 
     @DeleteMapping("/people/{id}")
-    public ResponseEntity<Void> delete(@PathVariable String id) {
-        personService.deleteById(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    public ResponseEntity<Void> delete(@PathVariable String id, HttpServletRequest request) {
+        if (usersService.checkUser(request)) {
+            personService.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
     @PutMapping("/people/replace")
-    public ResponseEntity<Void> replace(@RequestBody @Valid PersonPutRequest person) {
-        personService.replacePerson(person);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    public ResponseEntity<Void> replace(@RequestBody @Valid PersonPutRequest person, HttpServletRequest request) {
+        if (usersService.checkUser(request)) {
+            personService.replacePerson(person);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
 }

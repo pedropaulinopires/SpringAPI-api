@@ -16,13 +16,13 @@ import java.util.List;
 @Builder
 public class UsersPostRequest {
 
-    @NotEmpty( message = "field username not empty")
+    @NotEmpty(message = "field username not empty")
     private String username;
 
-    @NotEmpty( message = "field password not empty")
+    @NotEmpty(message = "field password not empty")
     private String password;
 
-    @NotEmpty( message = "field Authorities not empty")
+    @NotEmpty(message = "field Authorities not empty")
     private List<Authorities> authoritiesList;
 
     public Users build() {

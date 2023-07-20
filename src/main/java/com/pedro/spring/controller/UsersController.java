@@ -36,7 +36,7 @@ public class UsersController {
     @PostMapping("/user/auth")
     public ResponseEntity<Void> loginUser(@Valid @RequestBody UserLoginRequest user, HttpServletResponse response)
             throws UnsupportedEncodingException {
-        if (usersService.loginUser(user,response)) {
+        if (usersService.loginUser(user, response)) {
             return new ResponseEntity<>(HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
