@@ -7,6 +7,8 @@ import { loadPeoplesAfterDelete } from "./getPeoplesSetTable.js";
 
 let idPersonDelete;
 
+const endpoint = `http://localhost:8080/people/`;
+
 const spinRemoveActive = (bool) => {
   if (bool) {
     msgModaRemove.style.display = "none";
@@ -20,7 +22,7 @@ const spinRemoveActive = (bool) => {
 const deletePerson = () => {
   btnRemove.disabled = true;
   spinRemoveActive(true);
-  const endpoint = `http://ec2-3-85-188-228.compute-1.amazonaws.com:8080/people/${idPersonDelete}`;
+  let endpointFinish = endpoint + `${idPersonDelete}`
   const header = {
     method: "DELETE",
   };
