@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="imgs/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles/styleLogin.css">
+    <script
+      src="https://kit.fontawesome.com/8f36627611.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Login</title>
+</head>
+<body>
+    <title>Login</title>
+</head>
+<body>
+  <main>
+    <form autocomplete="off">
+      <div class="camp camp1">
+        <label class="text" id="usernameLabel" for="username">Usuário</label>
+        <input type="text" name="username" id="username" />
+        <p class="invalid" id="userNull">Campo de usuário obrigatório!</p>
+      </div>
+      <div class="camp">
+        <label class="text" for="password" id="labelPassword">Senha</label>
+        <input type="password" name="password" id="password" />
+        <label class="eye" >
+          <span class="eye">
+            <sapn id="eyeOk">
+              <i class="fa-solid fa-eye"></i>
+            </sapn>
+            <span id="eyeNot">
+              <i class="fa-sharp fa-solid fa-eye-slash"></i
+            ></span>
+        </span>
+        
+        </label>
+        <p class="invalid" id="passwordNull">Campo de senha obrigatório!</p>          
+      </div>
+      <div class="btns">
+        <div class="btn" id="btnSumbmit">Entrar</div>
+      </div>
+      <input type="file" name="" id="" multiple>
+    </form>
+  </main>
+    <script type="module" src="scripts/scriptFormLogin.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/min/dropzone.min.css">
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="/upload" class="dropzone" id="myDropzone">
+      <div class="fallback">
+        <input name="file" type="file" multiple />
+      </div>
+    </form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/min/dropzone.min.js"></script>
+    <script>
+      Dropzone.options.myDropzone = {
+        paramName: "files", // O nome do parâmetro que o servidor irá usar para processar os arquivos
+        maxFilesize: 2, // Tamanho máximo do arquivo em MB
+        parallelUploads: 5, // Quantidade de arquivos que serão enviados em paralelo
+        // Outras configurações e tratamentos de eventos podem ser adicionados conforme necessário
+      };
+    </script>
+  </body>
+</html>

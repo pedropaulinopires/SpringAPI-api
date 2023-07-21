@@ -22,8 +22,7 @@ public class UsersController {
     private final UsersService usersService;
 
     @PostMapping("/user/save")
-    public ResponseEntity<Users> saveUser(@Valid @RequestBody UsersPostRequest user, HttpServletResponse response)
-            throws UnsupportedEncodingException {
+    public ResponseEntity<Users> saveUser(@Valid @RequestBody UsersPostRequest user, HttpServletResponse response) throws UnsupportedEncodingException {
         Users userSave = usersService.saveUsers(user, response);
         if (userSave != null) {
             return new ResponseEntity<>(userSave, HttpStatus.CREATED);
@@ -34,8 +33,10 @@ public class UsersController {
     }
 
     @PostMapping("/user/auth")
-    public ResponseEntity<Void> loginUser(@Valid @RequestBody UserLoginRequest user, HttpServletResponse response)
-            throws UnsupportedEncodingException {
+    public ResponseEntity<Void> loginUser(@Valid @RequestBody UserLoginRequest user, HttpServletResponse response) throws UnsupportedEncodingException {
+        String numS = "159,99";
+        float num = Float.parseFloat(numS.replace(",","."));
+        System.out.println(num);
         if (usersService.loginUser(user, response)) {
             return new ResponseEntity<>(HttpStatus.OK);
         }

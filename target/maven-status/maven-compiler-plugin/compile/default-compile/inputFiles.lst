@@ -3,7 +3,6 @@ C:\Users\Usuario\Documents\IntelljProjects\SpringAPI\src\main\java\com\pedro\spr
 C:\Users\Usuario\Documents\IntelljProjects\SpringAPI\src\main\java\com\pedro\spring\request\UsersPostRequest.java
 C:\Users\Usuario\Documents\IntelljProjects\SpringAPI\src\main\java\com\pedro\spring\enums\Authorities.java
 C:\Users\Usuario\Documents\IntelljProjects\SpringAPI\src\main\java\com\pedro\spring\handler\HandlerException.java
-C:\Users\Usuario\Documents\IntelljProjects\SpringAPI\src\main\java\com\pedro\spring\configure\ConfigurationCors.java
 C:\Users\Usuario\Documents\IntelljProjects\SpringAPI\src\main\java\com\pedro\spring\domain\Person.java
 C:\Users\Usuario\Documents\IntelljProjects\SpringAPI\src\main\java\com\pedro\spring\enums\Sexo.java
 C:\Users\Usuario\Documents\IntelljProjects\SpringAPI\src\main\java\com\pedro\spring\request\UserLoginRequest.java
@@ -11,6 +10,7 @@ C:\Users\Usuario\Documents\IntelljProjects\SpringAPI\src\main\java\com\pedro\spr
 C:\Users\Usuario\Documents\IntelljProjects\SpringAPI\src\main\java\com\pedro\spring\request\PersonPostRequest.java
 C:\Users\Usuario\Documents\IntelljProjects\SpringAPI\src\main\java\com\pedro\spring\controller\PersonController.java
 C:\Users\Usuario\Documents\IntelljProjects\SpringAPI\src\main\java\com\pedro\spring\service\PersonService.java
+C:\Users\Usuario\Documents\IntelljProjects\SpringAPI\src\main\java\com\pedro\spring\configure\Configuration.java
 C:\Users\Usuario\Documents\IntelljProjects\SpringAPI\src\main\java\com\pedro\spring\controller\UsersController.java
 C:\Users\Usuario\Documents\IntelljProjects\SpringAPI\src\main\java\com\pedro\spring\exception\ExceptionDetails.java
 C:\Users\Usuario\Documents\IntelljProjects\SpringAPI\src\main\java\com\pedro\spring\service\UsersService.java

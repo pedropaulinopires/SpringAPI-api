@@ -48,25 +48,21 @@ public class UsersService {
             CookieService.setCookie(response, KEY, value, 60 * 60 * 24);
             return true;
         } else {
-            throw new UserException("Username/password invalid!");
+            return false;
         }
     }
 
     public boolean checkUser(HttpServletRequest request) {
         try {
             String cookie = CookieService.getCookie(request, KEY);
-            if (cookie != null) {
-                String tokenValid = jwtService.readToken(cookie);
-                Optional<Users> userSearch = usersRepository.findById(UUID.fromString(tokenValid));
-                if (userSearch != null) {
-                    return true;
-                }
-                return false;
+            String tokenValid = jwtService.readToken(cookie);
+            Optional<Users> userSearch = usersRepository.findById(UUID.fromString(tokenValid));
+            if (cookie != null && userSearch != null) {
+                return true;
             }
+            return false;
         } catch (Exception e) {
             return false;
         }
-        return false;
-
     }
 }

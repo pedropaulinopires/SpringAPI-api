@@ -33,7 +33,7 @@ let person = {
 const savePerson = () => {
   if (validationSave()) {
     spinActive(true)
-    const endpoint = "http://ec2-3-85-188-228.compute-1.amazonaws.com:8080/people/save";
+    const endpoint = "http://localhost:8080/people/save";
     person.setPersonSave()
     const headers = {
       method: "POST",
@@ -46,6 +46,8 @@ const savePerson = () => {
           inome.classList.add("is-invalid");
           msgNome.innerHTML = "Contato com esse nome já existe, tente outro!";
           spinActive(false)
+        } else if(response.status == 401){
+          //tentar
         } else {
           inome.value = "";
           showAlerta("Contato salvo com sucesso!");

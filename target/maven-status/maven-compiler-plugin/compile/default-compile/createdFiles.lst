@@ -15,6 +15,7 @@ com\pedro\spring\request\PersonPutRequest.class
 com\pedro\spring\request\UserLoginRequest.class
 com\pedro\spring\controller\UsersController.class
 com\pedro\spring\service\JwtService.class
+com\pedro\spring\configure\Configuration.class
 com\pedro\spring\exception\PersonNotFoundById.class
 com\pedro\spring\exception\ExceptionDetails$ExceptionDetailsBuilderImpl.class
 com\pedro\spring\exception\UserException.class
@@ -28,7 +29,6 @@ com\pedro\spring\exception\ValidationException$ValidationExceptionBuilderImpl.cl
 com\pedro\spring\wrapper\PageableResponse.class
 com\pedro\spring\request\UsersPutRequest$UsersPutRequestBuilder.class
 com\pedro\spring\domain\Users$UsersBuilder.class
-com\pedro\spring\configure\ConfigurationCors.class
 com\pedro\spring\repository\PersonRepository.class
 com\pedro\spring\domain\Person$PersonBuilder.class
 com\pedro\spring\enums\Authorities.class

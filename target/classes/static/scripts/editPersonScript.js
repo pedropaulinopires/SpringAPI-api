@@ -50,9 +50,8 @@ const editPerson = () => {
     spinEditActive(true);
     salvarEditar.disabled = true;
     const endpoint =
-      "http://ec2-3-85-188-228.compute-1.amazonaws.com:8080/people/replace";
+      "http://localhost:8080/people/replace";
     person.setPersonEdit();
-    console.log(person);
     const headers = {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -65,6 +64,8 @@ const editPerson = () => {
           msgEdit.innerHTML = "Contato com esse nome já existe, tente outro!";
           salvarEditar.disabled = false;
           spinEditActive(false);
+        } else if(response == 401){
+          //tente novamente
         } else {
           loadPeoplesAfterEdit();
         }

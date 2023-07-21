@@ -60,7 +60,7 @@ const showAndHideTableNotMessage = (bool) => {
 const loadPeoples = (page = 1) => {
   spinActive(true);
   const endpoint =
-    "http://ec2-3-85-188-228.compute-1.amazonaws.com:8080/peoples?page=" + page;
+    "http://localhost:8080/peoples?page=" + page;
   const header = {
     method: "GET",
   };
@@ -86,7 +86,7 @@ const loadPeoples = (page = 1) => {
 
 const loadPeoplesAfterDelete = (page=1) => {
   const endpoint =
-    "http://ec2-3-85-188-228.compute-1.amazonaws.com:8080/peoples?page=" + page;
+    "http://localhost:8080/peoples?page=" + page;
   const header = {
     method: "GET",
   };
@@ -115,7 +115,7 @@ const loadPeoplesAfterDelete = (page=1) => {
 
 const loadPeoplesAfterEdit = (page=1) => {
   const endpoint =
-    "http://ec2-3-85-188-228.compute-1.amazonaws.com:8080/peoples?page=" + page;
+    "http://localhost:8080/peoples?page=" + page;
   const header = {
     method: "GET",
   };
@@ -143,5 +143,6 @@ const loadPeoplesAfterEdit = (page=1) => {
 };
 
 loadPeoples();
+
 
 export { loadPeoples, showAndHideTableNotMessage, btnRemovePerson, loadPeoplesAfterDelete, loadPeoplesAfterEdit };

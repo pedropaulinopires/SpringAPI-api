@@ -7,7 +7,6 @@ import { loadPeoplesAfterDelete } from "./getPeoplesSetTable.js";
 
 let idPersonDelete;
 
-const endpoint = `http://localhost:8080/people/`;
 
 const spinRemoveActive = (bool) => {
   if (bool) {
@@ -22,13 +21,16 @@ const spinRemoveActive = (bool) => {
 const deletePerson = () => {
   btnRemove.disabled = true;
   spinRemoveActive(true);
-  let endpointFinish = endpoint + `${idPersonDelete}`
+  const endpoint = `http://localhost:8080/people/${idPersonDelete}`
   const header = {
     method: "DELETE",
   };
   fetch(endpoint, header)
     .then((response) => {
-      if (response.ok) {
+      if(response.status == 401){
+        //tente novamente
+        
+      } else if (response.ok) {
         loadPeoplesAfterDelete();
       }
     })
