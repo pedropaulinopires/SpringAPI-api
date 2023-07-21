@@ -12,7 +12,7 @@ import java.util.Date;
 @Log4j2
 public class JwtService {
 
-    private static final int TIME_EXPIRES = 900000;
+    private static final int TIME_EXPIRES = 600000;
     public static final String TOKEN_PASSWORD = "41989389-700f-4349-9a1d-5eb5e98ffc8a";
 
     public String generatedToken(Users user) {
